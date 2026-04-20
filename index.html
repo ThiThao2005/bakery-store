@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery Shop - Hoàn Thiện</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">Bakery</div>
+
+  <nav>
+    <a href="#home" class="menu-item active">Home</a>
+    <a href="#shop" class="menu-item">Shop</a>
+    <a href="#about" class="menu-item">About</a>
+  </nav>
+
+  <div class="icons">
+    <i class="fas fa-search"></i>
+    <div class="cart-wrapper" onclick="openCheckout()" style="cursor: pointer; position: relative;">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+    </div>
+    <i class="fas fa-user"></i>
+  </div>
+</header>
+
+<section class="slider" id="home">
+  <span class="arrow prev" onclick="prev()">❮</span>
+  <div class="slider-text">
+    <p>Order Cakes Online</p>
+    <h1>Upto 80% Off</h1>
+    <button class="buy-btn">Buy Now</button>
+  </div>
+  <div class="slider-img-container">
+    <img id="slideImg" src="https://cdn.tgdd.vn/2021/10/CookRecipe/Avatar/banh-kem-socola-hinh-trai-tim-thumbnail-1.jpg" alt="Cake">
+  </div>
+  <span class="arrow next" onclick="next()">❯</span>
+</section>
+
+<section class="section" id="shop">
+  <h2 class="main-title">The Bakery</h2>
+
+  <div class="section-header">
+    <h3>Categories</h3>
+    <a href="#" class="view-all" onclick="openViewAll(event)">View All >></a>
+  </div>
+  <div class="categories">
+    <div class="card"><img src="https://recipesbymary.com/wp-content/uploads/2025/08/fresh-strawberry-cupcakes-with-creamy-frosting.png"><p>Fresh Cupcake</p></div>
+    <div class="card"><img src="https://yeutre.vn/cdn/medias/uploads/33/33684-banh-cookies-4.jpg"><p>Cookies</p></div>
+    <div class="card"><img src="https://i.ytimg.com/vi/j6Lhd8EPx-M/maxresdefault.jpg"><p>Brown Bread</p></div>
+    <div class="card"><img src="https://cdn.tgdd.vn/Files/2021/09/10/1381788/hoc-ngay-cach-lam-banh-chocolate-mem-xop-khong-can-dung-bot-202109102334444270.jpg"><p>Dark Chocolate</p></div>
+    <div class="card"><img src="https://tse4.mm.bing.net/th?id=OIP.DffvukzfdtNeV63LaPRrGAHaE8"><p>Wheat</p></div>
+  </div>
+
+  <div class="section-header">
+    <h3>Products</h3>
+    <a href="#" class="view-all" onclick="openViewAll(event)">View All >></a>
+  </div>
+  <div class="products">
+    <div class="card">
+      <img src="https://i.pinimg.com/originals/5b/14/f8/5b14f821cb2f2a5cd29695742dd26866.jpg">
+      <p class="product-name">Fruit Cakes</p>
+      <p class="price">$25</p>
+      <button onclick="addToCart('Fruit Cakes', 25)">Add to cart</button>
+    </div>
+    <div class="card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.lI5oPL_P4agbdJkixbqi1AHaEJ">
+        <p class="product-name">Donut</p>
+        <p class="price">$5</p>
+        <button onclick="addToCart('Donut', 5)">Add to cart</button>
+    </div>
+    <div class="card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.DffvukzfdtNeV63LaPRrGAHaE8">
+        <p class="product-name">Sparkle Cake</p>
+        <p class="price">$15</p>
+        <button onclick="addToCart('Sparkle Cake', 15)">Add to cart</button>
+    </div>
+    <div class="card">
+        <img src="https://cdn.tgdd.vn/2021/10/CookRecipe/Avatar/banh-kem-socola-hinh-trai-tim-thumbnail-1.jpg">
+        <p class="product-name">Nutella Cake</p>
+        <p class="price">$12</p>
+        <button onclick="addToCart('Nutella Cake', 12)">Add to cart</button>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-container">
+      <div class="about-img">
+        <img src="https://cdn.tgdd.vn/2020/09/CookProduct/1260-1200x676-67.jpg">
+      </div>
+      <div class="about-text">
+        <h2>About Us</h2>
+        <h3>The Cake Shop</h3>
+        <p>Tiệm bánh của chúng tôi thể hiện cam kết về chất lượng, sự sáng tạo và sự hài lòng của khách hàng.</p>
+        <button>Read More</button>
+      </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-section">
+    <h4>Quick Links</h4>
+    <a href="#"><i class="fas fa-arrow-right"></i> Home</a>
+    <a href="#"><i class="fas fa-arrow-right"></i> Shop</a>
+    <a href="#"><i class="fas fa-arrow-right"></i> About</a>
+  </div>
+  <div class="footer-section">
+    <h4>Follow Us</h4>
+    <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+  </div>
+</footer>
+<div class="copy">@2025 Bakery Store</div>
+
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Tất Cả Sản Phẩm</h2>
+      <span class="close-modal" onclick="closeViewAll()">&times;</span>
+    </div>
+    <div class="modal-toolbar">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Tìm tên bánh..." onkeyup="filterProducts()">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="filter-box">
+        <label>Giá dưới:</label>
+        <select id="priceFilter" onchange="filterProducts()">
+          <option value="all">Tất cả giá</option>
+          <option value="10">Dưới $10</option>
+          <option value="20">Dưới $20</option>
+          <option value="30">Dưới $30</option>
+        </select>
+      </div>
+    </div>
+    <div class="products-grid-full" id="full-product-list"></div>
+  </div>
+</div>
+
+<div id="checkout-modal" class="modal">
+  <div class="modal-content" style="max-width: 500px;">
+    <div class="modal-header">
+      <h2>Thanh Toán Đơn Hàng</h2>
+      <span class="close-modal" onclick="closeCheckout()">&times;</span>
+    </div>
+    
+    <div id="cart-details-list" style="margin: 20px 0; max-height: 250px; overflow-y: auto;">
+        </div>
+
+    <div class="order-summary" style="padding: 10px; background: #fdfafb; border-radius: 5px;">
+        <p style="display: flex; justify-content: space-between;">
+            <span>Tổng số lượng:</span> <strong id="summary-count">0</strong>
+        </p>
+        <p style="display: flex; justify-content: space-between; font-size: 1.2rem; color: #e91e63;">
+            <span>Tổng tiền:</span> <strong id="summary-total">$0</strong>
+        </p>
+    </div>
+
+    <form id="checkout-form" onsubmit="processOrder(event)" style="margin-top: 20px;">
+      <div class="form-group">
+        <label>Họ và Tên:</label>
+        <input type="text" required placeholder="Nguyễn Văn A">
+      </div>
+      <div class="form-group">
+        <label>Số Điện Thoại:</label>
+        <input type="tel" required placeholder="0901234xxx">
+      </div>
+      <div class="form-group">
+        <label>Địa Chỉ Giao Hàng:</label>
+        <textarea required placeholder="Số nhà, tên đường..."></textarea>
+      </div>
+      <button type="submit" class="buy-btn" style="width: 100%; margin-top: 15px;">Xác Nhận Đặt Hàng</button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
